@@ -1,10 +1,10 @@
-1)
+# 1)
 # set up
 sudo iptables -I INPUT -s 172.16.1.0/24 -j DROP
 sudo iptables -I OUTPUT -s 172.16.1.0/24 -j DROP
 
 # clean up
-sudo iptables -D OUTPUT -s 172.16.1.0/24 -j DROP
+sudo iptables -D INPUT -s 172.16.1.0/24 -j DROP
 sudo iptables -D OUTPUT -s 172.16.1.0/24 -j DROP
 
 
