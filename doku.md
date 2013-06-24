@@ -21,9 +21,10 @@ Stellen Sie die Firewall eines Rechners so ein, dass dort über das Netz 172.16
 Konfigurieren Sie einen Rechner so, dass er über das Netz 172.16.1.0/24 am Chat als Client teilnehmen, aber nicht als Server dienen kann.
 
 	sudo /usr/sbin/iptables -I OUTPUT -s 172.16.1.0/24 -p tcp --dport 50000 -j ACCEPT
+	sudo /usr/sbin/iptables -I INPUT -s 172.16.1.0/24 -p tcp --dport 50000 -j DROP	
+	sudo /usr/sbin/iptables -I INPUT -s 172.16.1.0/24 -p tcp --sport 50000 -j ACCEPT
 	sudo /usr/sbin/iptables -I OUTPUT -s 172.16.1.0/24 -p udp --dport 50001 -j ACCEPT
 	sudo /usr/sbin/iptables -I INPUT -s 172.16.1.0/24 -p udp --dport 50001 -j ACCEPT
-	sudo /usr/sbin/iptables -I INPUT -s 172.16.1.0/24 -p tcp --dport 50000 -j DROP	
 
 ###d)
 Stellen Sie die Firewall Ihres Rechners so ein, dass von dort ein ping auf andere Rechner/Geräte im Netz 172.16.1.0/24 möglich ist, nicht aber umgekehrt!
